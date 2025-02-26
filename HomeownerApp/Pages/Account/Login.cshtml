@@ -1,0 +1,118 @@
+@page
+@model HomeownerApp.Models.LoginModel
+@{
+    ViewData["Title"] = "Sign In | HomeSmart";
+    Layout = "_LoginLayout";
+}
+
+<div class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Logo with home link -->
+            <a href="/" class="logo-link" title="Return to home page">
+                <img src="~/images/logo.png" alt="HomeSmart Logo" class="auth-logo" />
+            </a>
+            <h2 class="auth-title">Welcome Back!</h2>
+            <p class="auth-subtitle">Sign in to continue managing your home</p>
+            
+            <!-- Alert for error messages (hidden by default) -->
+            <div class="alert alert-danger d-none" id="error-alert" role="alert">
+                Invalid email or password. Please try again.
+            </div>
+            
+            <form method="post" id="login-form">
+                <!-- Email Input -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                
+                <!-- Password Input -->
+                <div class="form-group">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label for="password" class="form-label">Password</label>
+                        <a href="/Account/ForgotPassword" class="forgot-password-link" style="font-size: 0.85rem;">Forgot Password?</a>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" class="form-control" id="password" required>
+                        <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Remember Me Checkbox -->
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">
+                        Keep me signed in
+                    </label>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">
+                    <span class="spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"></span>
+                    Sign In
+                </button>
+                
+                <!-- Separator -->
+                <div class="separator mt-3 mb-3">
+                    <span>or continue with</span>
+                </div>
+                
+                <!-- Social Login Buttons -->
+                <div class="social-login">
+                    <button type="button" class="btn google social-btn">
+                        <i class="bi bi-google"></i>
+                    </button>
+                    <button type="button" class="btn facebook social-btn">
+                        <i class="bi bi-facebook"></i>
+                    </button>
+                    <button type="button" class="btn apple social-btn">
+                        <i class="bi bi-apple"></i> 
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Footer Links -->
+            <p class="auth-footer text-center">
+                Don't have an account? <a href="/Account/Register" class="fw-bold">Sign Up</a>
+            </p>
+            
+            <div class="text-center">
+                <a href="/" class="back-to-home">
+                    <i class="bi bi-house-door me-1"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle password visibility
+        const togglePassword = document.querySelector('.toggle-password');
+        const passwordInput = document.querySelector('#password');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('bi-eye');
+            this.querySelector('i').classList.toggle('bi-eye-slash');
+        });
+        
+        // Form submission animation
+        const form = document.getElementById('login-form');
+        form.addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const spinner = submitBtn.querySelector('.spinner-border');
+            
+            submitBtn.setAttribute('disabled', true);
+            spinner.classList.remove('d-none');
+        });
+    });
+</script>

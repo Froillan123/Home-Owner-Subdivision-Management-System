@@ -1,0 +1,344 @@
+:root {
+    --brown: #8B4513;           /* Dark Brown */
+    --light-brown: #A0522D;     /* Light Brown */
+    --dark-brown: #654321;      /* Darker Brown */
+    --beige: #F5F5DC;           /* Beige */
+    --primary: var(--brown);    /* Primary color */
+    --secondary: var(--light-brown); /* Secondary color */
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--beige); /* Use beige as the background */
+}
+
+/* Main Container - Full height centering */
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--beige) 0%, rgba(245, 245, 220, 0.9) 100%), url('/images/auth-bg.jpg') no-repeat center center/cover;
+}
+
+/* Auth Container - Wider and centered */
+.auth-container {
+    width: 100%;
+    max-width: 800px; /* Increased width */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Auth Card - Modern design */
+.auth-card {
+    background-color: white;
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo - Centered and themed */
+.auth-logo {
+    width: 120px;
+    margin: 0 auto 1.5rem auto;
+    display: block;
+}
+
+/* Title and Subtitle - Themed and compact */
+.auth-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+    font-size: 1rem;
+    color: var(--dark-brown);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Registration Progress - Modern and animated */
+.registration-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.step-text {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.progress-step.active .step-number {
+    background-color: var(--primary);
+    color: white;
+}
+
+.progress-step.active .step-text {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.progress-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #e9ecef;
+    margin: 0 10px;
+    margin-bottom: 28px;
+    position: relative;
+}
+
+.progress-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: var(--primary);
+    transition: width 0.5s ease;
+}
+
+.progress-step.active ~ .progress-line::after {
+    width: 100%;
+}
+
+/* Form Controls - Themed and spaced */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    height: auto;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+.input-group-text {
+    background-color: white;
+    border-right: none;
+    color: var(--primary);
+}
+
+.input-group .form-control {
+    border-left: none;
+}
+
+/* Password Toggle Button - Themed */
+.toggle-password {
+    border-left: none;
+    background-color: white;
+    color: var(--primary);
+}
+
+.toggle-password:hover {
+    background-color: var(--beige);
+}
+
+/* Password Strength Meter - Themed */
+.password-strength {
+    margin-top: 0.5rem;
+}
+
+.password-strength .progress {
+    height: 5px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+}
+
+.password-strength .progress-bar {
+    transition: width 0.3s ease;
+}
+
+.password-feedback {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--dark-brown);
+}
+
+/* Submit Button - Themed */
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--light-brown);
+    border-color: var(--light-brown);
+}
+
+/* Social Login Buttons - Themed and compact */
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 1.5rem 0;
+}
+
+.social-btn {
+    flex: 1;
+    max-width: 120px;
+    border-radius: 10px;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.social-btn.google {
+    background-color: #db4437; /* Google red */
+    color: white;
+    border: none;
+}
+
+.social-btn.facebook {
+    background-color: #1877f2; /* Facebook blue */
+    color: white;
+    border: none;
+}
+
+.social-btn.apple {
+    background-color: #000; /* Apple black */
+    color: white;
+    border: none;
+}
+
+.social-btn:hover {
+    opacity: 0.9;
+}
+
+/* Separator - Themed */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+    color: var(--dark-brown);
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.separator::before {
+    margin-right: 1rem;
+}
+
+.separator::after {
+    margin-left: 1rem;
+}
+
+/* Footer Links - Themed */
+.auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--dark-brown);
+}
+
+.auth-footer a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.back-to-home {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.back-to-home a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.back-to-home a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .auth-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .auth-card {
+        padding: 2rem;
+    }
+
+    .auth-title {
+        font-size: 1.75rem;
+    }
+
+    .auth-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .registration-progress {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .progress-line {
+        margin-bottom: 1rem;
+    }
+
+    .step-text {
+        display: block;
+    }
+}
